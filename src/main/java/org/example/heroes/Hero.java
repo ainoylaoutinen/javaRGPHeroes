@@ -36,4 +36,8 @@ public class Hero {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    public void levelUp() {
+        level = level + 1;
+    }
 }
