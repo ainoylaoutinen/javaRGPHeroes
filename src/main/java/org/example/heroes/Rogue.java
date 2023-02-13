@@ -2,35 +2,20 @@ package org.example.heroes;
 
 public class Rogue extends Hero {
 
-    int rogueStrength = 2;
-    int rogueDexterity = 6;
-    int rogueIntelligence = 1;
+    private static int STARTING_STRENGTH = 2;
+    private static int STARTING_DEXTERITY = 6;
+    private static int STARTING_INTELLIGENCE = 1;
 
-    public Rogue(String name, int level, HeroAttribute heroAttribute) {
-        super(name, level, heroAttribute);
+    private static final int STRENGTH_LEVEL_UP = 1;
+    private static final int DEXTERITY_LEVEL_UP = 4;
+    private static final int INTELLIGENCE_LEVEL_UP = 1;
+
+    public Rogue(String name) {
+        super(name, new HeroAttribute(STARTING_STRENGTH, STARTING_DEXTERITY, STARTING_INTELLIGENCE));
     }
 
-    public int getRogueStrength() {
-        return rogueStrength;
-    }
-
-    public void setRogueStrength(int rogueStrength) {
-        this.rogueStrength = rogueStrength;
-    }
-
-    public int getRogueDexterity() {
-        return rogueDexterity;
-    }
-
-    public void setRogueDexterity(int rogueDexterity) {
-        this.rogueDexterity = rogueDexterity;
-    }
-
-    public int getRogueIntelligence() {
-        return rogueIntelligence;
-    }
-
-    public void setRogueIntelligence(int rogueIntelligence) {
-        this.rogueIntelligence = rogueIntelligence;
+    @Override
+    public HeroAttribute getLevelUpAttributes() {
+        return new HeroAttribute(STRENGTH_LEVEL_UP, DEXTERITY_LEVEL_UP, INTELLIGENCE_LEVEL_UP);
     }
 }

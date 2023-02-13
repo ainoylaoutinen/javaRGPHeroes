@@ -2,35 +2,22 @@ package org.example.heroes;
 
 public class Mage extends Hero {
 
-    int mageStrength = 1;
-    int mageDexterity = 1;
-    int mageIntelligence = 8;
+    private static int STARTING_STRENGTH = 1;
+    private static int STARTING_DEXTERITY = 1;
+    private static int STARTING_INTELLIGENCE = 8;
 
-    public Mage(String name, int level, HeroAttribute heroAttribute) {
-        super(name, level, heroAttribute);
+    private static final int STRENGTH_LEVEL_UP = 1;
+    private static final int DEXTERITY_LEVEL_UP = 1;
+    private static final int INTELLIGENCE_LEVEL_UP = 5;
+    //note to self: By making the variable static, it becomes associated with the class itself, rather than instances of that class
+
+    public Mage(String name) {
+        super(name, new HeroAttribute(STARTING_STRENGTH, STARTING_DEXTERITY, STARTING_INTELLIGENCE));
     }
 
-    public int getMageStrength() {
-        return mageStrength;
+    @Override
+    public HeroAttribute getLevelUpAttributes() {
+        return new HeroAttribute(STRENGTH_LEVEL_UP, DEXTERITY_LEVEL_UP, INTELLIGENCE_LEVEL_UP);
     }
 
-    public void setMageStrength(int mageStrength) {
-        this.mageStrength = mageStrength;
-    }
-
-    public int getMageDexterity() {
-        return mageDexterity;
-    }
-
-    public void setMageDexterity(int mageDexterity) {
-        this.mageDexterity = mageDexterity;
-    }
-
-    public int getMageIntelligence() {
-        return mageIntelligence;
-    }
-
-    public void setMageIntelligence(int mageIntelligence) {
-        this.mageIntelligence = mageIntelligence;
-    }
 }

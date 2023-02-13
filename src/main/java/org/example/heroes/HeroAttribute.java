@@ -43,4 +43,12 @@ public class HeroAttribute {
                 ", intelligence=" + intelligence +
                 '}';
     }
+
+    public void add(HeroAttribute other) {
+        this.strength += other.strength;
+        this.dexterity += other.dexterity;
+        this.intelligence += other.intelligence;
+
+
+    }
 }
