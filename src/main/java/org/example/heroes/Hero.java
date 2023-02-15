@@ -1,16 +1,17 @@
 package org.example.heroes;
 
-import org.example.items.Item;
-import org.example.items.Slot;
+import org.example.items.*;
+import org.example.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public abstract class Hero {
 
     private String name;
     private int level;
-    //private int levelAttributes;... = heroAttrubutes?
+    private HeroAttribute levelAttributes;
 
     ArrayList<String> equipment = new ArrayList<String>();
     ArrayList<String> validWeaponTypes = new ArrayList<String>();
@@ -27,6 +28,10 @@ public abstract class Hero {
         heroEquipment.put(Slot.LEGS, null);
 
     }
+
+    protected abstract List<ArmorType> getValidArmorTypes();
+
+    protected abstract List<WeaponType> getValidWeaponTypes();
 
     public HeroAttribute getHeroAttribute() {
         return heroAttribute;
@@ -63,6 +68,24 @@ public abstract class Hero {
         heroAttribute.add(getLevelUpAttributes());
     }
 
+    public void equipArmor(Armor armor) throws InvalidArmorException {
 
+    if (!getValidArmorTypes().contains(armor.getArmorType())) {
+     throw new InvalidArmorException("Your cannot equip " + armor.getArmorType());
+    } else {
+        //if (getValidArmorTypes().contains(armor.getArmorType())) {
+        heroEquipment.put(armor.getSlot(), armor);
+    }
+    }
+
+    public void equipWeapon(Weapon weapon) throws InvalidWeaponException {
+    if (!getValidWeaponTypes().contains(weapon.getWeaponType())) {
+        throw new InvalidWeaponException("Your cannot equip " + weapon.getWeaponType());
+    } else {
+        //if (getValidWeaponTypes().contains(weapon.getWeaponType())) {
+        heroEquipment.put(Slot.WEAPON, weapon);
+    }
+    }
+ 
     public abstract HeroAttribute getLevelUpAttributes();
 }

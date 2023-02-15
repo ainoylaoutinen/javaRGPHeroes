@@ -1,5 +1,10 @@
 package org.example.heroes;
 
+import org.example.items.ArmorType;
+import org.example.items.WeaponType;
+
+import java.util.List;
+
 public class Rogue extends Hero {
 
     private static int STARTING_STRENGTH = 2;
@@ -17,5 +22,13 @@ public class Rogue extends Hero {
     @Override
     public HeroAttribute getLevelUpAttributes() {
         return new HeroAttribute(STRENGTH_LEVEL_UP, DEXTERITY_LEVEL_UP, INTELLIGENCE_LEVEL_UP);
+    }
+
+    protected List<ArmorType> getValidArmorTypes(){
+        return List.of(ArmorType.LEATHER,ArmorType.MAIL);
+    }
+
+    protected List<WeaponType>getValidWeaponTypes(){
+        return List.of(WeaponType.DAGGER, WeaponType.SWORD);
     }
 }

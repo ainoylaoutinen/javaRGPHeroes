@@ -1,12 +1,14 @@
 package org.example.items;
 
-public class Weapon extends Item{
+public class Weapon extends Item {
 
+    private int weaponDamage;
     private WeaponType weaponType;
-    private WeaponDamage weaponDamage;
 
-    public Weapon(String itemName, int requiredLevel, Slot slot) {
+    public Weapon(String itemName, int requiredLevel, Slot slot, WeaponType weapontype, int weaponDamage) {
         super(itemName, requiredLevel, slot);
+        this.weaponType = weapontype;
+        this.weaponDamage = weaponDamage;
     }
 
     public WeaponType getWeaponType() {
@@ -17,11 +19,15 @@ public class Weapon extends Item{
         this.weaponType = weaponType;
     }
 
-    public WeaponDamage getWeaponDamage() {
+    public int getWeaponDamage() {
         return weaponDamage;
     }
 
-    public void setWeaponDamage(WeaponDamage weaponDamage) {
+    public void setWeaponDamage(int weaponDamage) {
         this.weaponDamage = weaponDamage;
     }
+
+
 }
+
+
