@@ -19,7 +19,7 @@ class RogueTest {
     Weapon weaponForTesting = new Weapon("daggery", 1, Slot.WEAPON, WeaponType.DAGGER, 3);
 
     @Test
-    public void getName(){
+    public void getName() {
         Assertions.assertEquals("Bad Rogue", rogue.getName());
     }
 
@@ -35,7 +35,8 @@ class RogueTest {
 
         Assertions.assertEquals(heroAttributes_expected.getStrength(), heroAttributes_actual.getStrength());
         Assertions.assertEquals(heroAttributes_expected.getDexterity(), heroAttributes_actual.getDexterity());
-        Assertions.assertEquals(heroAttributes_expected.getIntelligence(), heroAttributes_actual.getIntelligence());    }
+        Assertions.assertEquals(heroAttributes_expected.getIntelligence(), heroAttributes_actual.getIntelligence());
+    }
 
     @Test
     void getValidArmorTypes() {
@@ -76,27 +77,27 @@ class RogueTest {
         rogue.equipWeapon(weaponForTesting);
         rogue.equipArmor(armorForTesting);
 
-        Assertions.assertEquals(3*(1+(10/100)), rogue.calculateDamage());
+        Assertions.assertEquals(3 * (1 + (10 / 100)), rogue.calculateDamage());
     }
 
     @Test
     public void displayHero() {
 
         String display_expected = """
-                    Name: Bad Rogue
-                    Level: 1
-                    Total Strength: 2
-                    Total Dexterity: 6
-                    Total Intelligence: 1
-                    """;
+                Name: Bad Rogue
+                Level: 1
+                Total Strength: 2
+                Total Dexterity: 6
+                Total Intelligence: 1
+                """;
 
         String display_actual = format("""
-                    Name: %s
-                    Level: %d
-                    Total Strength: %d
-                    Total Dexterity: %d
-                    Total Intelligence: %d
-                    """,
+                        Name: %s
+                        Level: %d
+                        Total Strength: %d
+                        Total Dexterity: %d
+                        Total Intelligence: %d
+                        """,
                 rogue.getName(),
                 rogue.getLevel(),
                 rogue.getLevelAttributes().getStrength(),

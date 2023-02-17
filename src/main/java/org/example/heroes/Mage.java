@@ -27,11 +27,11 @@ public class Mage extends Hero {
         return new HeroAttribute(STRENGTH_LEVEL_UP, DEXTERITY_LEVEL_UP, INTELLIGENCE_LEVEL_UP);
     }
 
-    protected List<ArmorType>getValidArmorTypes(){
+    protected List<ArmorType> getValidArmorTypes() {
         return List.of(ArmorType.CLOTH);
     }
 
-    protected List<WeaponType>getValidWeaponTypes(){
+    protected List<WeaponType> getValidWeaponTypes() {
         return List.of(WeaponType.STAFF, WeaponType.WAND);
     }
 
@@ -39,7 +39,7 @@ public class Mage extends Hero {
 
         Weapon currentWeapon = (Weapon) getHeroEquipment().get(Slot.WEAPON);
         int currentWeaponDamage = currentWeapon.getWeaponDamage();
-        int heroDamage = currentWeaponDamage * (1 + totalAttributes().getIntelligence()/100);
+        int heroDamage = currentWeaponDamage * (1 + totalAttributes().getIntelligence() / 100);
 
         return heroDamage;
     }

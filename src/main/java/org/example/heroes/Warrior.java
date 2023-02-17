@@ -26,11 +26,11 @@ public class Warrior extends Hero {
         return new HeroAttribute(STRENGTH_LEVEL_UP, DEXTERITY_LEVEL_UP, INTELLIGENCE_LEVEL_UP);
     }
 
-    protected List<ArmorType> getValidArmorTypes(){
-        return List.of(ArmorType.MAIL,ArmorType.PLATE);
+    protected List<ArmorType> getValidArmorTypes() {
+        return List.of(ArmorType.MAIL, ArmorType.PLATE);
     }
 
-    protected List<WeaponType>getValidWeaponTypes(){
+    protected List<WeaponType> getValidWeaponTypes() {
         return List.of(WeaponType.AXE, WeaponType.HAMMER, WeaponType.SWORD);
     }
 
@@ -38,7 +38,7 @@ public class Warrior extends Hero {
 
         Weapon currentWeapon = (Weapon) getHeroEquipment().get(Slot.WEAPON);
         int currentWeaponDamage = currentWeapon.getWeaponDamage();
-        int heroDamage = currentWeaponDamage * (1 + totalAttributes().getIntelligence()/100);
+        int heroDamage = currentWeaponDamage * (1 + totalAttributes().getIntelligence() / 100);
 
         return heroDamage;
     }

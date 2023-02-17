@@ -19,7 +19,7 @@ public class ArmorTest {
     }
 
     @Test
-    public void getArmorAttributes(){
+    public void getArmorAttributes() {
 
         HeroAttribute armorAttributes_expected = new HeroAttribute(3, 4, 5);
         HeroAttribute armorAttributes_actual = armor.getArmorAttribute();

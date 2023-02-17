@@ -20,7 +20,7 @@ class RangerTest {
     Weapon weaponForTesting = new Weapon("DBowie", 1, Slot.WEAPON, WeaponType.BOW, 4);
 
     @Test
-    public void getName(){
+    public void getName() {
         Assertions.assertEquals("Great Ranger", ranger.getName());
     }
 
@@ -84,27 +84,27 @@ class RangerTest {
         ranger.equipWeapon(weaponForTesting);
         ranger.equipArmor(armorForTesting);
 
-        Assertions.assertEquals(4*(1+(10/100)), ranger.calculateDamage());
+        Assertions.assertEquals(4 * (1 + (10 / 100)), ranger.calculateDamage());
     }
 
     @Test
     public void displayHero() {
 
         String display_expected = """
-                    Name: Great Ranger
-                    Level: 1
-                    Total Strength: 1
-                    Total Dexterity: 7
-                    Total Intelligence: 1
-                    """;
+                Name: Great Ranger
+                Level: 1
+                Total Strength: 1
+                Total Dexterity: 7
+                Total Intelligence: 1
+                """;
 
         String display_actual = format("""
-                    Name: %s
-                    Level: %d
-                    Total Strength: %d
-                    Total Dexterity: %d
-                    Total Intelligence: %d
-                    """,
+                        Name: %s
+                        Level: %d
+                        Total Strength: %d
+                        Total Dexterity: %d
+                        Total Intelligence: %d
+                        """,
                 ranger.getName(),
                 ranger.getLevel(),
                 ranger.getLevelAttributes().getStrength(),

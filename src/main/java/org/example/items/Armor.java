@@ -2,7 +2,7 @@ package org.example.items;
 
 import org.example.heroes.HeroAttribute;
 
-public class Armor extends Item{
+public class Armor extends Item {
 
     private ArmorType armorType;
 
@@ -22,6 +22,8 @@ public class Armor extends Item{
         this.armorType = armorType;
     }
 
-    public HeroAttribute getArmorAttribute() { return armorAttribute; }
+    public HeroAttribute getArmorAttribute() {
+        return armorAttribute;
+    }
 
 }

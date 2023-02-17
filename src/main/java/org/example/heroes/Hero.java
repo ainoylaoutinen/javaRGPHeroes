@@ -50,23 +50,23 @@ public abstract class Hero {
 
     public void equipArmor(Armor armor) throws InvalidArmorException {
 
-    if (!getValidArmorTypes().contains(armor.getArmorType())) {
-        throw new InvalidArmorException("Your cannot equip " + armor.getArmorType());
-    } else if (level < armor.getRequiredLevel()){
-        throw new InvalidArmorException("Your level is too low");
-    } else {
-        heroEquipment.put(armor.getSlot(), armor);
-    }
+        if (!getValidArmorTypes().contains(armor.getArmorType())) {
+            throw new InvalidArmorException("Your cannot equip " + armor.getArmorType());
+        } else if (level < armor.getRequiredLevel()) {
+            throw new InvalidArmorException("Your level is too low");
+        } else {
+            heroEquipment.put(armor.getSlot(), armor);
+        }
     }
 
     public void equipWeapon(Weapon weapon) throws InvalidWeaponException {
-    if (!getValidWeaponTypes().contains(weapon.getWeaponType())) {
-        throw new InvalidWeaponException("Your cannot equip " + weapon.getWeaponType());
-    } else if (level < weapon.getRequiredLevel()){
-        throw new InvalidWeaponException("Your level is too low");
-    } else {
-        heroEquipment.put(Slot.WEAPON, weapon);
-    }
+        if (!getValidWeaponTypes().contains(weapon.getWeaponType())) {
+            throw new InvalidWeaponException("Your cannot equip " + weapon.getWeaponType());
+        } else if (level < weapon.getRequiredLevel()) {
+            throw new InvalidWeaponException("Your level is too low");
+        } else {
+            heroEquipment.put(Slot.WEAPON, weapon);
+        }
     }
 
     public void setLevelAttributes(HeroAttribute levelAttributes) {
@@ -76,22 +76,22 @@ public abstract class Hero {
     public HeroAttribute getLevelAttributes() {
         return levelAttributes;
     }
- 
+
     public abstract HeroAttribute getLevelUpAttributes();
 
     public HeroAttribute totalAttributes() {
 
-        HeroAttribute totalValues = new HeroAttribute(0,0,0);
+        HeroAttribute totalValues = new HeroAttribute(0, 0, 0);
         totalValues.add(levelAttributes);
 
-       heroEquipment.forEach((key, value) -> {
-           if (value instanceof Armor) {
-               HeroAttribute armorAttributes = ((Armor) value).getArmorAttribute();
-               totalValues.add(armorAttributes);
-           }
-       });
+        heroEquipment.forEach((key, value) -> {
+            if (value instanceof Armor) {
+                HeroAttribute armorAttributes = ((Armor) value).getArmorAttribute();
+                totalValues.add(armorAttributes);
+            }
+        });
 
-       return totalValues;
+        return totalValues;
 
     }
 

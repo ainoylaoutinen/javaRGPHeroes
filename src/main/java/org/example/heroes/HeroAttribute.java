@@ -1,5 +1,8 @@
 package org.example.heroes;
+
 public class HeroAttribute {
+
+    //Class for HeroAttributes shared by all Heroes.
 
     private int strength;
     private int dexterity;
@@ -48,7 +51,6 @@ public class HeroAttribute {
         this.strength += other.strength;
         this.dexterity += other.dexterity;
         this.intelligence += other.intelligence;
-
 
     }
 }

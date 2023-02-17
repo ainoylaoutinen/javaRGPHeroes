@@ -21,7 +21,7 @@ class MageTest {
     Armor armorForTestingDamage = new Armor("Clothie", 1, Slot.BODY, ArmorType.CLOTH, new HeroAttribute(1, 2, 2));
 
     @Test
-    public void getName(){
+    public void getName() {
         Assertions.assertEquals("Amazing Mage", mage.getName());
     }
 
@@ -76,9 +76,9 @@ class MageTest {
 
     //@Test
     //void equipWeapon() throws InvalidWeaponException{
-        //mage.equipWeapon(weaponForTesting);
+    //mage.equipWeapon(weaponForTesting);
 
-        //assertEquals(weaponForTesting, mage.getHeroEquipment());
+    //assertEquals(weaponForTesting, mage.getHeroEquipment());
 
     //}
 
@@ -100,27 +100,27 @@ class MageTest {
         mage.equipWeapon(weaponForTesting);
         mage.equipArmor(armorForTestingDamage);
 
-        Assertions.assertEquals(5*(1+(10/100)), mage.calculateDamage());
+        Assertions.assertEquals(5 * (1 + (10 / 100)), mage.calculateDamage());
     }
 
     @Test
     public void displayHero() {
 
         String display_expected = """
-                    Name: Amazing Mage
-                    Level: 1
-                    Total Strength: 1
-                    Total Dexterity: 1
-                    Total Intelligence: 8
-                    """;
+                Name: Amazing Mage
+                Level: 1
+                Total Strength: 1
+                Total Dexterity: 1
+                Total Intelligence: 8
+                """;
 
         String display_actual = format("""
-                    Name: %s
-                    Level: %d
-                    Total Strength: %d
-                    Total Dexterity: %d
-                    Total Intelligence: %d
-                    """,
+                        Name: %s
+                        Level: %d
+                        Total Strength: %d
+                        Total Dexterity: %d
+                        Total Intelligence: %d
+                        """,
                 mage.getName(),
                 mage.getLevel(),
                 mage.getLevelAttributes().getStrength(),
