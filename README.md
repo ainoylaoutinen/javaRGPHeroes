@@ -12,7 +12,7 @@ b) Equipment, such as armor and weapons, that characters can equip. The equipped
 the hero, causing it to deal more damage and be able to survive longer. Certain heroes can equip certain item 
 types.
 
-c) Custom exceptions. There are two custom exceptions you are required to write, as detailed in Appendix B.
+c) Custom exceptions. There are two custom exceptions you are required to write.
 
 d) Testing of the main functionality.
 
