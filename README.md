@@ -1,6 +1,7 @@
 # Java RGP Heroes
 
-This is my solution for the first Java backend assignment of the Noroff bootcamp! It is a Maven application written in Java.
+This is my solution for the first Java backend assignment of the Noroff bootcamp! It is a Maven application written in Java. 
+I have completed this assignment on my own.
 
 ## Requirements
 
