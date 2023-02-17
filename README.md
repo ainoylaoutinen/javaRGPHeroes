@@ -14,3 +14,8 @@ types.
 c) Custom exceptions. There are two custom exceptions you are required to write, as detailed in Appendix B.
 
 d) Testing of the main functionality.
+
+## My Solution
+
+Functionality completed, some minor tests missing due to time constraints.
+
