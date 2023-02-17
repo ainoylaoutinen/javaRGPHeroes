@@ -1,6 +1,8 @@
 package org.example.heroes;
 
 import org.example.items.ArmorType;
+import org.example.items.Slot;
+import org.example.items.Weapon;
 import org.example.items.WeaponType;
 
 import java.util.List;
@@ -30,5 +32,14 @@ public class Ranger extends Hero {
 
     protected List<WeaponType>getValidWeaponTypes(){
         return List.of(WeaponType.BOW);
+    }
+
+    public int calculateDamage() {
+
+        Weapon currentWeapon = (Weapon) getHeroEquipment().get(Slot.WEAPON);
+        int currentWeaponDamage = currentWeapon.getWeaponDamage();
+        int heroDamage = currentWeaponDamage * (1 + totalAttributes().getIntelligence()/100);
+
+        return heroDamage;
     }
 }

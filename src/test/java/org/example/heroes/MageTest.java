@@ -1,18 +1,34 @@
 package org.example.heroes;
 
-import org.example.items.ArmorType;
-import org.example.items.WeaponType;
+import org.example.exceptions.InvalidArmorException;
+import org.example.exceptions.InvalidWeaponException;
+import org.example.items.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.example.heroes.Mage;
 
 import java.util.List;
 
+import static java.lang.String.format;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MageTest {
 
+    //Some testing data
     Hero mage = new Mage("Amazing Mage");
+    Weapon weaponForTesting = new Weapon("Wandie", 1, Slot.WEAPON, WeaponType.WAND, 5);
+    //Item anotherWeaponForTesting = new Weapon("weapon3", 1, Slot.WEAPON);
+    Armor armorForTestingTotal = new Armor("Armor 1", 1, Slot.BODY, ArmorType.CLOTH, new HeroAttribute(2, 2, 2));
+    Armor armorForTestingDamage = new Armor("Clothie", 1, Slot.BODY, ArmorType.CLOTH, new HeroAttribute(1, 2, 2));
+
+    @Test
+    public void getName(){
+        Assertions.assertEquals("Amazing Mage", mage.getName());
+    }
+
+    @Test
+    public void getLevel() {
+        Assertions.assertEquals(1, mage.getLevel());
+    }
 
     @Test
     void getLevelUpAttributes() {
@@ -43,9 +59,75 @@ class MageTest {
     }
 
     @Test
-    void levelUp() {
+    void getLevelUpHero() {
+        assertEquals(1, mage.getLevel());
+        assertEquals(Mage.STARTING_STRENGTH, mage.getLevelAttributes().getStrength());
+        assertEquals(Mage.STARTING_DEXTERITY, mage.getLevelAttributes().getDexterity());
+        assertEquals(Mage.STARTING_INTELLIGENCE, mage.getLevelAttributes().getIntelligence());
+        //note to self: Mage. instead of mage. because the attributes belong to Mage class, not a specific mage
 
+        mage.levelUp();
 
-
+        assertEquals(2, mage.getLevel());
+        assertEquals(Mage.STARTING_STRENGTH + Mage.STRENGTH_LEVEL_UP, mage.getLevelAttributes().getStrength());
+        assertEquals(Mage.STARTING_DEXTERITY + Mage.DEXTERITY_LEVEL_UP, mage.getLevelAttributes().getDexterity());
+        assertEquals(Mage.STARTING_INTELLIGENCE + Mage.INTELLIGENCE_LEVEL_UP, mage.getLevelAttributes().getIntelligence());
     }
+
+    //@Test
+    //void equipWeapon() throws InvalidWeaponException{
+        //mage.equipWeapon(weaponForTesting);
+
+        //assertEquals(weaponForTesting, mage.getHeroEquipment());
+
+    //}
+
+    @Test
+    void testTotalAttributes() throws InvalidArmorException {
+
+        mage.equipArmor(armorForTestingTotal);
+
+        HeroAttribute expected_total = new HeroAttribute(3, 3, 10);
+        HeroAttribute actual_total = mage.totalAttributes();
+
+        assertEquals(expected_total, actual_total);
+    }
+
+    @Test
+    public void calculateDamage() throws InvalidArmorException, InvalidWeaponException {
+
+        mage.levelUp();
+        mage.equipWeapon(weaponForTesting);
+        mage.equipArmor(armorForTestingDamage);
+
+        Assertions.assertEquals(5*(1+(10/100)), mage.calculateDamage());
+    }
+
+    @Test
+    public void displayHero() {
+
+        String display_expected = """
+                    Name: Amazing Mage
+                    Level: 1
+                    Total Strength: 1
+                    Total Dexterity: 1
+                    Total Intelligence: 8
+                    """;
+
+        String display_actual = format("""
+                    Name: %s
+                    Level: %d
+                    Total Strength: %d
+                    Total Dexterity: %d
+                    Total Intelligence: %d
+                    """,
+                mage.getName(),
+                mage.getLevel(),
+                mage.getLevelAttributes().getStrength(),
+                mage.getLevelAttributes().getDexterity(),
+                mage.getLevelAttributes().getIntelligence());
+
+        Assertions.assertEquals(display_expected, display_actual);
+    }
+
 }
