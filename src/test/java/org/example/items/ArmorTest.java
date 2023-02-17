@@ -1,6 +1,9 @@
 package org.example.items;
 
 import org.example.heroes.HeroAttribute;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.subclasses.Armor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

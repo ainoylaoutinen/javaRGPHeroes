@@ -2,6 +2,11 @@ package org.example.heroes;
 
 import org.example.items.*;
 import org.example.exceptions.*;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.enums.WeaponType;
+import org.example.items.subclasses.Armor;
+import org.example.items.subclasses.Weapon;
 
 import java.util.HashMap;
 import java.util.List;

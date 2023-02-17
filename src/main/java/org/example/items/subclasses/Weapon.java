@@ -1,4 +1,8 @@
-package org.example.items;
+package org.example.items.subclasses;
+
+import org.example.items.Item;
+import org.example.items.enums.Slot;
+import org.example.items.enums.WeaponType;
 
 public class Weapon extends Item {
 

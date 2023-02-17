@@ -1,23 +1,26 @@
-package org.example.heroes;
+package org.example.heroes.subclasses;
 
-import org.example.items.ArmorType;
-import org.example.items.Slot;
-import org.example.items.Weapon;
-import org.example.items.WeaponType;
+import org.example.heroes.Hero;
+import org.example.heroes.HeroAttribute;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.subclasses.Weapon;
+import org.example.items.enums.WeaponType;
 
 import java.util.List;
 
-public class Ranger extends Hero {
+public class Mage extends Hero {
 
     public static final int STARTING_STRENGTH = 1;
-    public static final int STARTING_DEXTERITY = 7;
-    public static final int STARTING_INTELLIGENCE = 1;
+    public static final int STARTING_DEXTERITY = 1;
+    public static final int STARTING_INTELLIGENCE = 8;
 
     public static final int STRENGTH_LEVEL_UP = 1;
-    public static final int DEXTERITY_LEVEL_UP = 5;
-    public static final int INTELLIGENCE_LEVEL_UP = 1;
+    public static final int DEXTERITY_LEVEL_UP = 1;
+    public static final int INTELLIGENCE_LEVEL_UP = 5;
+    //note to self: By making the variable static, it becomes associated with the class itself, rather than instances of that class
 
-    public Ranger(String name) {
+    public Mage(String name) {
         super(name, new HeroAttribute(STARTING_STRENGTH, STARTING_DEXTERITY, STARTING_INTELLIGENCE));
     }
 
@@ -27,11 +30,11 @@ public class Ranger extends Hero {
     }
 
     protected List<ArmorType> getValidArmorTypes() {
-        return List.of(ArmorType.LEATHER, ArmorType.MAIL);
+        return List.of(ArmorType.CLOTH);
     }
 
     protected List<WeaponType> getValidWeaponTypes() {
-        return List.of(WeaponType.BOW);
+        return List.of(WeaponType.STAFF, WeaponType.WAND);
     }
 
     public int calculateDamage() {
@@ -42,4 +45,5 @@ public class Ranger extends Hero {
 
         return heroDamage;
     }
+
 }

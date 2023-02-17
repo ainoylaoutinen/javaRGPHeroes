@@ -2,7 +2,12 @@ package org.example.heroes;
 
 import org.example.exceptions.InvalidArmorException;
 import org.example.exceptions.InvalidWeaponException;
-import org.example.items.*;
+import org.example.heroes.subclasses.Ranger;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.enums.WeaponType;
+import org.example.items.subclasses.Armor;
+import org.example.items.subclasses.Weapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -67,7 +72,6 @@ class RangerTest {
         Assertions.assertEquals(armorType_expected, armorType_actual);
     }
 
-
     @Test
     void getValidWeaponTypes() {
 
@@ -75,6 +79,20 @@ class RangerTest {
         List<WeaponType> weaponType_actual = ranger.getValidWeaponTypes();
 
         Assertions.assertEquals(weaponType_expected, weaponType_actual);
+    }
+
+    @Test
+    void testTotalAttributes() throws InvalidArmorException {
+
+        ranger.equipArmor(armorForTesting);
+
+        HeroAttribute expected_total = new HeroAttribute(3, 9, 3);
+        HeroAttribute actual_total = ranger.totalAttributes();
+
+        assertEquals(expected_total.getIntelligence(), actual_total.getIntelligence());
+        assertEquals(expected_total.getDexterity(), actual_total.getDexterity());
+        assertEquals(expected_total.getStrength(), actual_total.getStrength());
+
     }
 
     @Test

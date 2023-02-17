@@ -1,23 +1,25 @@
-package org.example.heroes;
+package org.example.heroes.subclasses;
 
-import org.example.items.ArmorType;
-import org.example.items.Slot;
-import org.example.items.Weapon;
-import org.example.items.WeaponType;
+import org.example.heroes.Hero;
+import org.example.heroes.HeroAttribute;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.subclasses.Weapon;
+import org.example.items.enums.WeaponType;
 
 import java.util.List;
 
-public class Warrior extends Hero {
+public class Ranger extends Hero {
 
-    public static final int STARTING_STRENGTH = 5;
-    public static final int STARTING_DEXTERITY = 2;
+    public static final int STARTING_STRENGTH = 1;
+    public static final int STARTING_DEXTERITY = 7;
     public static final int STARTING_INTELLIGENCE = 1;
 
-    public static final int STRENGTH_LEVEL_UP = 3;
-    public static final int DEXTERITY_LEVEL_UP = 2;
+    public static final int STRENGTH_LEVEL_UP = 1;
+    public static final int DEXTERITY_LEVEL_UP = 5;
     public static final int INTELLIGENCE_LEVEL_UP = 1;
 
-    public Warrior(String name) {
+    public Ranger(String name) {
         super(name, new HeroAttribute(STARTING_STRENGTH, STARTING_DEXTERITY, STARTING_INTELLIGENCE));
     }
 
@@ -27,11 +29,11 @@ public class Warrior extends Hero {
     }
 
     protected List<ArmorType> getValidArmorTypes() {
-        return List.of(ArmorType.MAIL, ArmorType.PLATE);
+        return List.of(ArmorType.LEATHER, ArmorType.MAIL);
     }
 
     protected List<WeaponType> getValidWeaponTypes() {
-        return List.of(WeaponType.AXE, WeaponType.HAMMER, WeaponType.SWORD);
+        return List.of(WeaponType.BOW);
     }
 
     public int calculateDamage() {

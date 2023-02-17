@@ -2,7 +2,12 @@ package org.example.heroes;
 
 import org.example.exceptions.InvalidArmorException;
 import org.example.exceptions.InvalidWeaponException;
-import org.example.items.*;
+import org.example.heroes.subclasses.Warrior;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.enums.WeaponType;
+import org.example.items.subclasses.Armor;
+import org.example.items.subclasses.Weapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -69,6 +74,20 @@ class WarriorTest {
         assertEquals(Warrior.STARTING_STRENGTH + Warrior.STRENGTH_LEVEL_UP, warrior.getLevelAttributes().getStrength());
         assertEquals(Warrior.STARTING_DEXTERITY + Warrior.DEXTERITY_LEVEL_UP, warrior.getLevelAttributes().getDexterity());
         assertEquals(Warrior.STARTING_INTELLIGENCE + Warrior.INTELLIGENCE_LEVEL_UP, warrior.getLevelAttributes().getIntelligence());
+    }
+
+    @Test
+    void testTotalAttributes() throws InvalidArmorException {
+
+        warrior.equipArmor(armorForTesting);
+
+        HeroAttribute expected_total = new HeroAttribute(9, 5, 6);
+        HeroAttribute actual_total = warrior.totalAttributes();
+
+        assertEquals(expected_total.getIntelligence(), actual_total.getIntelligence());
+        assertEquals(expected_total.getDexterity(), actual_total.getDexterity());
+        assertEquals(expected_total.getStrength(), actual_total.getStrength());
+
     }
 
     @Test

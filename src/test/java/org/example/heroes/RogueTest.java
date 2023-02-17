@@ -2,7 +2,12 @@ package org.example.heroes;
 
 import org.example.exceptions.InvalidArmorException;
 import org.example.exceptions.InvalidWeaponException;
-import org.example.items.*;
+import org.example.heroes.subclasses.Rogue;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.enums.WeaponType;
+import org.example.items.subclasses.Armor;
+import org.example.items.subclasses.Weapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -68,6 +73,20 @@ class RogueTest {
         assertEquals(Rogue.STARTING_STRENGTH + Rogue.STRENGTH_LEVEL_UP, rogue.getLevelAttributes().getStrength());
         assertEquals(Rogue.STARTING_DEXTERITY + Rogue.DEXTERITY_LEVEL_UP, rogue.getLevelAttributes().getDexterity());
         assertEquals(Rogue.STARTING_INTELLIGENCE + Rogue.INTELLIGENCE_LEVEL_UP, rogue.getLevelAttributes().getIntelligence());
+    }
+
+    @Test
+    void testTotalAttributes() throws InvalidArmorException {
+
+        rogue.equipArmor(armorForTesting);
+
+        HeroAttribute expected_total = new HeroAttribute(3, 8, 6);
+        HeroAttribute actual_total = rogue.totalAttributes();
+
+        assertEquals(expected_total.getIntelligence(), actual_total.getIntelligence());
+        assertEquals(expected_total.getDexterity(), actual_total.getDexterity());
+        assertEquals(expected_total.getStrength(), actual_total.getStrength());
+
     }
 
     @Test

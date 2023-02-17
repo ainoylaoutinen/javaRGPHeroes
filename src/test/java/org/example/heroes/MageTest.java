@@ -2,7 +2,13 @@ package org.example.heroes;
 
 import org.example.exceptions.InvalidArmorException;
 import org.example.exceptions.InvalidWeaponException;
+import org.example.heroes.subclasses.Mage;
 import org.example.items.*;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
+import org.example.items.enums.WeaponType;
+import org.example.items.subclasses.Armor;
+import org.example.items.subclasses.Weapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +22,7 @@ class MageTest {
     //Some testing data
     Hero mage = new Mage("Amazing Mage");
     Weapon weaponForTesting = new Weapon("Wandie", 1, Slot.WEAPON, WeaponType.WAND, 5);
-    //Item anotherWeaponForTesting = new Weapon("weapon3", 1, Slot.WEAPON);
+    Item anotherWeaponForTesting = new Item("weapon3", 1, Slot.WEAPON);
     Armor armorForTestingTotal = new Armor("Armor 1", 1, Slot.BODY, ArmorType.CLOTH, new HeroAttribute(2, 2, 2));
     Armor armorForTestingDamage = new Armor("Clothie", 1, Slot.BODY, ArmorType.CLOTH, new HeroAttribute(1, 2, 2));
 
@@ -74,14 +80,6 @@ class MageTest {
         assertEquals(Mage.STARTING_INTELLIGENCE + Mage.INTELLIGENCE_LEVEL_UP, mage.getLevelAttributes().getIntelligence());
     }
 
-    //@Test
-    //void equipWeapon() throws InvalidWeaponException{
-    //mage.equipWeapon(weaponForTesting);
-
-    //assertEquals(weaponForTesting, mage.getHeroEquipment());
-
-    //}
-
     @Test
     void testTotalAttributes() throws InvalidArmorException {
 
@@ -90,7 +88,10 @@ class MageTest {
         HeroAttribute expected_total = new HeroAttribute(3, 3, 10);
         HeroAttribute actual_total = mage.totalAttributes();
 
-        assertEquals(expected_total, actual_total);
+        assertEquals(expected_total.getIntelligence(), actual_total.getIntelligence());
+        assertEquals(expected_total.getDexterity(), actual_total.getDexterity());
+        assertEquals(expected_total.getStrength(), actual_total.getStrength());
+
     }
 
     @Test

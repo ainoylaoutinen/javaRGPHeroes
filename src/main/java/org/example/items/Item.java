@@ -1,5 +1,7 @@
 package org.example.items;
 
+import org.example.items.enums.Slot;
+
 public class Item {
 
     private String itemName;

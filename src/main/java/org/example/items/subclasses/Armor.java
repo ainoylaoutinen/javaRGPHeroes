@@ -1,6 +1,9 @@
-package org.example.items;
+package org.example.items.subclasses;
 
 import org.example.heroes.HeroAttribute;
+import org.example.items.Item;
+import org.example.items.enums.ArmorType;
+import org.example.items.enums.Slot;
 
 public class Armor extends Item {
 
